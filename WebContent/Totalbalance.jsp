@@ -15,7 +15,7 @@
 			until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="index.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A>
 			<h1>
 				HD - BANK<span class="style1"></span>
@@ -27,11 +27,11 @@
 		<div id="navigation">
 			<ul>
 				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance1.jsp">BALANCE</a></li>
-				<li><a href="deposit1.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw1.jsp">WITHDRAW</a></li>
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="closeac1.jsp">CLOSE A/C</a></li>
+				<li><a href="balance.jsp">BALANCE</a></li>
+				<li><a href="deposit.jsp">DEPOSIT</a></li>
+				<li><a href="withdraw.jsp">WITHDRAW</a></li>
+				<li><a href="transfer.jsp">TRANSFER</a></li>
+				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>

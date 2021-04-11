@@ -1,12 +1,59 @@
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <A href="index.html"><IMG SRC="pictures/12.png" height="50px" widht="50px"></IMG></A>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HD BANKS</title>
+
+<link href="index.css" rel="stylesheet" type="text/css">
   <title>About Us - HD-BANK, New Delhi</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+	<style>
+	p{
+	color: rgb(173, 173, 173);
+	margin: 10px;
+	padding: 10px;
+	}</style>
+
 </head>
 
 <body>
+
+		<div id="top_links">
+
+		<marquee style="background-color: white;">"No carelessness
+			until there is a cure" </marquee>
+
+		<div id="header">
+			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+				width="50px"></IMG></A>
+			<h1>
+				HD - BANK<span class="style1"></span>
+			</h1>
+			<h2>Corporate Banking application</h2>
+
+		</div>
+
+		<div id="navigation">
+			<ul>
+				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
+				<li><a href="balance.jsp">BALANCE</a></li>
+				<li><a href="deposit.jsp">DEPOSIT</a></li>
+				<li><a href="withdraw.jsp">WITHDRAW</a></li>
+				<li><a href="transfer.jsp">TRANSFER</a></li>
+				<li><a href="closeac.jsp">CLOSE A/C</a></li>
+				<li><a href="about.jsp">ABOUT US</a></li>
+			</ul>
+		</div>
+
 
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
   </table>
@@ -15,19 +62,18 @@
   <table width="100%" border="0" cellspacing="10" cellpadding="0">
     <tr>
       <td class="bodyheading">
-        <h1>
-          <!-- InstanceBeginEditable name="Heading" -->About Us
-        </h1><!-- InstanceEndEditable -->
+        <h1 style="color: rgb(173, 173, 173)">
+          About Us
+        </h1>
       </td>
     </tr>
     <tr>
       <td class="bodytext">
-        <!-- InstanceBeginEditable name="Body of Article" -->
         <h2 align="center" class="bodytextheading"><img id="no-border" src="pictures/13.jpg" width="1000"
             height="350"><br>
-          <span class="style2">HD-BANK, c.p.</span>
+          <span class="style1">HD-BANK, c.p.</span>
         </h2>
-        <p align="justify" class="bodytextheading">History </p>
+        <h2 style="color: rgb(173, 173, 173)" align="justify" class="bodytextheading"> History </h2>
         <p align="justify">HD-BANK c.p. is one of the most prestigious BANKs in India. Founded as a Public BANK in 1972
           in New Delhi, it is a private institution run by the Delhi Public BANK Society.</p>
         <p align="justify"> HD-BANK, c.p. is affiliated to the Central Board of Bank (CBB), which is the largest
@@ -43,7 +89,9 @@
           The BANK upholds the founders' commitment to excellence in all fields, with emphasis on its motto Service
           Before Self.<br>
         </p>
-        <p align="justify" class="bodytextheading">BANK Profile</p>
+        
+        <h2 style="color: rgb(173, 173, 173)" align="justify" class="bodytextheading">BANK Profile</h2>
+        
         <p align="justify"> HD-BANK, c.p. is a co-educational day-cum-boarding BANK, with approximately 9,500 coustemer
           on its rolls. These children, in the Junior and Senior branches, study in the three different campuses at East
           of Kailash, Vasant Vihar and c.p.</p>
@@ -61,7 +109,9 @@
           necessary to meet the challenges in the future.</p>
         <p align="justify"> To sum up, the mission of HD-BANK, c.p. &quot;to open doors and open minds&quot; and prepare
           the ground for the future of the nation.</p>
-        <p align="justify" class="bodytextheading"> Our Culture</p>
+          
+        <h2 style="color: rgb(173, 173, 173)" align="justify" class="bodytextheading"> Our Culture</h2>
+        
         <p align="justify"> In the portals of HD-BANK, c.p., c.p. coustmer discover their own talents, and get an
           opportunity to develop them to the fullest. The BANK provides an invigorating and competitive atmosphere,
           created by excellent facilities and guidance provided by a highly qualified and dedicated faculty.</p>
@@ -90,7 +140,7 @@
         <p align="justify"> All the academic programs and activities at HD-BANK, c.p. work towards one purpose - to help
           coustemer develop lives of significance for themselves and for others, true to the traditions of the BANK
           Motto &quot;Service Before Self&quot;.</p>
-        <!-- InstanceEndEditable -->
+      
       </td>
     </tr>
   </table>
@@ -107,7 +157,7 @@
   <table width="100%" border="0" cellspacing="7" cellpadding="0">
     <tr>
       <td>
-        <div align="center"><span class="bottombar"><strong>&copy; HD-BANK, c.p., New Delhi. All Rights Reserved.
+        <div align="center" style="color: rgb(173, 173, 173)" ><span class="bottombar"><strong>&copy; HD-BANK, c.p., New Delhi. All Rights Reserved.
             </strong></span></div>
       </td>
     </tr>
@@ -126,6 +176,5 @@
   </tr>
   </table>
 </body>
-<!-- InstanceEnd -->
 
 </html>

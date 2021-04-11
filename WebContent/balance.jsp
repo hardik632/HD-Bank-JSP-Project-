@@ -1,21 +1,53 @@
 <html>
+
 <head>
+<SCRIPT LANGUAGE="JavaScript">
+        function dil(form) {
+            for (var i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].value == "") {
+                    alert("Fill out all Fields")
+                    document.F1.accountno.focus()
+                    return false
+                }
+            }
 
+            if (isNaN(document.F1.accountno.value)) {
+                alert("Accountno must  be  varchar & can't be null")
+                document.F1.accountno.value = ""
+                document.F1.accountno.focus()
+                return false
+            }
+            if (!isNaN(document.F1.username.value)) {
+                alert("User Name  must  be  char's & can't be null")
+                document.F1.username.value = ""
+                document.F1.username.focus()
+                return false
+            }
+
+            if (!isNaN(document.F1.password.value)) {
+                alert("Password  must  be  char's & can't be null")
+                document.F1.password.value = ""
+                document.F1.password.focus()
+                return false
+            }
+
+            return true
+        }
+    </SCRIPT>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>HD BANKS</title>
-
+<title>HD BANK</title>
 <link href="index.css" rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
+
 	<div id="top_links">
 
 		<marquee style="background-color: white;">"No carelessness
 			until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="index.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A>
 			<h1>
 				HD - BANK<span class="style1"></span>
@@ -24,14 +56,14 @@
 
 		</div>
 
-		<div id="navigation">
+				<div id="navigation">
 			<ul>
 				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance1.jsp">BALANCE</a></li>
-				<li><a href="deposit1.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw1.jsp">WITHDRAW</a></li>
-				<li><a href="transfer1.jsp">TRANSFER</a></li>
-				<li><a href="closeac1.jsp">CLOSE A/C</a></li>
+				<li><a href="balance.jsp">BALANCE</a></li>
+				<li><a href="deposit.jsp">DEPOSIT</a></li>
+				<li><a href="withdraw.jsp">WITHDRAW</a></li>
+				<li><a href="transfer.jsp">TRANSFER</a></li>
+				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
@@ -51,76 +83,140 @@
 						</ul>
 					</div>
 				</td>
+				<td width="400" valign="top"
+					style="border-right: #666666 1px dotted;">
+					<div id="welcome">
+
+						<h1>BALANCE FORM</h1>
+						<br>
+						<table align="center" bgcolor="white">
+							<tr>
+
+							</tr>
+							<tr>
+								<td>
+									<div>
+										<%if(request.getAttribute("balance")!=null) {
+                                            out.print(request.getAttribute("balance")); } %>
+									</div>
+									<form name=F1 onSubmit="return dil(this)" action="balance.jsp"
+										method="post">
+										<table>
+											<tr>
+												<td>ACCOUNT NO:</td>
+												<td><input type="text" name="accountno" /></td>
+											</tr>
+											<tr>
+												<td>USER NAME:</td>
+												<td><input type="text" name="username" /></td>
+											</tr>
+											<tr>
+												<td>PASSWORD:</td>
+												<td><input type="password" name="password" /></td>
+											</tr>
+
+											<tr>
+												<td></td>
+												<td><input class="button button2" type="submit"
+													value="Submit" /> <input class="button button3"
+													type="reset" value="Clear" />
+										</table>
+									</form>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+
+				<td width="400" valign="top"
+					style="border-right: #666666 1px dotted;">
+					<div id="welcome">
+						<h1>Welcome</h1>
+						<br>
+						<center>
+							<img src="pictures/11.gif" alt="business" width="196"
+								height="106">
+						</center>
+						<br>
+						<p>Welcome to HD BANKS. Here you can create new account ,
+							withdraw money , deposit money , transfer money , check balance
+							and can close your account online.</p>
+
+					</div>
+				</td>
 
 
-				<td width="800" valign="top">
-					<% %>
-					<table>
-						<%
-		String num=request.getParameter("accountno");
-		int accountno=Integer.parseInt(num);
-        String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		boolean status = false;
-		
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-		PreparedStatement ps=cn.prepareStatement("Select * from NEWACCOUNT where accountno=? and username = ? and password =?");
-			ps.setInt(1,accountno);
-			ps.setString(2,username);
-			ps.setString(3,password);
-			ResultSet rs=ps.executeQuery();
-			status=rs.next();
-			
-		try {
-		if(status==true){
-			out.print("Welcome   " + username);
-			out.println("<hr>");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-			PreparedStatement ps1=con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
-            ps1.setInt(1,accountno);
-			ResultSet rs1=ps1.executeQuery();
-			
-			out.print("<table align='left' cellspacing='5' cellpadding='5' border=1px>");
-			out.print("<tr><th>ACCOUNT NO</th><th>USERNAME</th><th>AMOUNT</th><th>ADDRESS</th></tr>");
-			while(rs1.next()){
-			    int accountno1=rs1.getInt(1);
-				session.setAttribute("accountno",accountno1);
-				
-				System.out.print(accountno);
-				
-				out.print("<tr>");
-				out.print("<td>" + rs1.getString(1) + "</td>");
-				out.print("<td>" + rs1.getString(2) + "</td>");
-				out.print("<td>" + rs1.getInt(5) + "</td>");
-				out.print("<td>" + rs1.getString(6) + "</td>");
-				out.print("</tr>");
-			
-			}
-			out.print("</table>");
-			
-			
-			
-		}
-		else
-		{
-			out.print("Please check your username and Password");
-			request.setAttribute("balance","Please check your username and Password");
-			%>
-						<jsp:forward page="balance1.jsp"></jsp:forward>
-						<% 
-		}
-		 }
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-			%>
-					</table> <%%>
-				
+			</tr>
 		</table>
+
+<div id="footer_top">
+			<div id="footer_navigation"></div>
+			<marquee style="background-color: yellow; color: blue;">Beware of fictitious offers/ lottery winnings/ cheap funds offers</marquee>
+			<div id="footer_copyright">
+
+				<div class="slideshow-container">
+					<div class="mySlides fade">
+						<img src="pictures/5.jpg" style="width: 142%; height: 400px">
+					</div>
+					<div class="mySlides fade">
+						<img src="pictures/4.jpg" style="width: 142%; height: 400px">
+					</div>
+
+					<div class="mySlides fade">
+						<img src="pictures/3.jpg" style="width: 142%; height: 400px">
+					</div>
+
+					<div class="mySlides fade">
+						<img src="pictures/2.jpg" style="width: 142%; height: 400px">
+					</div>
+
+					<div class="mySlides fade">
+						<img src="pictures/1.jpg" style="width: 142%; height: 400px">
+					</div>
+
+				</div>
+				<br>
+				<div style="text-align: center">
+					<span class="dot"></span> <span class="dot"></span> <span
+						class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+				</div>
+				<marquee style="background-color: yellow; color: blue;">HD
+					never asks for your Card/PIN/OTP/CVV details on phone, message or
+					email. Please do not click on links received on your email or
+					mobile asking your Bank/Card details. | Attention Retail/Corporate
+					INB Users, transaction OTP will be made mandatory for all merchant
+					related transactions, hence please have your mobile varchar
+					registered if the same has not been done until now.</marquee>
+				Copyright © HD BANKS
+			</div>
+			<script>
+                var slideIndex = 0;
+                showSlides();
+
+                function showSlides() {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) { slideIndex = 1 }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                    setTimeout(showSlides, 2000); // Change image every 2 seconds
+                }
+            </script>
+
+
+		</div>
+
+
 	</div>
 
+</body>
 
-	<%@ page import="java.sql.*"%>
-	<%@ page import="java.io.*"%>
+</html>
