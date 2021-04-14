@@ -49,6 +49,8 @@
 		<div id="header">
 			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A>
+				<A href="index.html" style = "float:right"><img height="50px"
+				width="50px" src="pictures/14.png"></A>
 			<h1>
 				HD - BANK<span class="style1"></span>
 			</h1>
@@ -134,7 +136,7 @@
 						<h1>Welcome</h1>
 						<br>
 						<center>
-							<img src="pictures/11.gif" alt="business" width="196"
+							<img src="pictures/11.png" alt="business" width="196"
 								height="106">
 						</center>
 						<br>
@@ -156,22 +158,22 @@
 
 				<div class="slideshow-container">
 					<div class="mySlides fade">
-						<img src="pictures/5.jpg" style="width: 142%; height: 400px">
+						<img src="pictures/5.jpg" style="width: 128%; height: 400px">
 					</div>
 					<div class="mySlides fade">
-						<img src="pictures/4.jpg" style="width: 142%; height: 400px">
-					</div>
-
-					<div class="mySlides fade">
-						<img src="pictures/3.jpg" style="width: 142%; height: 400px">
+						<img src="pictures/4.jpg" style="width: 128%; height: 400px">
 					</div>
 
 					<div class="mySlides fade">
-						<img src="pictures/2.jpg" style="width: 142%; height: 400px">
+						<img src="pictures/3.jpg" style="width: 128%; height: 400px">
 					</div>
 
 					<div class="mySlides fade">
-						<img src="pictures/1.jpg" style="width: 142%; height: 400px">
+						<img src="pictures/2.jpg" style="width: 128%; height: 400px">
+					</div>
+
+					<div class="mySlides fade">
+						<img src="pictures/1.jpg" style="width: 128%; height: 400px">
 					</div>
 
 				</div>

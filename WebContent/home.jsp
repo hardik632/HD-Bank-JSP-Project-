@@ -33,6 +33,8 @@
 		<div id="header">
 			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A>
+				<A href="index.html" style = "float:right"><img height="50px"
+				width="50px" src="pictures/14.png"></A>
 			<h1>
 				HD - BANK<span class="style1"></span>
 			</h1>
