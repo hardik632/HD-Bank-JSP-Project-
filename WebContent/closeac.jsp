@@ -115,7 +115,7 @@
 										<%if(request.getAttribute("balance")!=null) {
                                             out.print(request.getAttribute("balance")); } %>
 									</div>
-									<form name=F1 onSubmit="return dil(this)" action="closeac.jsp">
+									<form name=F1 onSubmit="return dil(this)" action="closeacdb.jsp">
 										<table cellspacing="5" cellpadding="3">
 											<tr>
 												<td>ACCOUNT NO:</td>

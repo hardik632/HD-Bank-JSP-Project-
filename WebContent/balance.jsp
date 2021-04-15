@@ -101,7 +101,7 @@
 										<%if(request.getAttribute("balance")!=null) {
                                             out.print(request.getAttribute("balance")); } %>
 									</div>
-									<form name=F1 onSubmit="return dil(this)" action="balance.jsp"
+									<form name=F1 onSubmit="return dil(this)" action="balancedb.jsp"
 										method="post">
 										<table>
 											<tr>

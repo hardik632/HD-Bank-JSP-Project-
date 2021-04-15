@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<SCRIPT LANGUAGE="JavaScript">
+<SCRIPT>
         function dil(form) {
             for (var i = 0; i < form.elements.length; i++) {
                 if (form.elements[i].value == "") {
@@ -120,7 +120,7 @@
 										<%if(request.getAttribute("balance")!=null) {
                                             out.print(request.getAttribute("balance")); } %>
 									</div>
-									<form name=F1 onSubmit="return dil(this)" action="deposit.jsp">
+									<form name=F1 onSubmit="return dil(this)" action="depositdb.jsp">
 										<table>
 											<tr>
 												<td>ACCOUNT NO:</td>

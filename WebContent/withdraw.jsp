@@ -122,7 +122,7 @@
 										<%if(request.getAttribute("balance")!=null) {
                                             out.print(request.getAttribute("balance")); } %>
 									</div>
-									<form name=F1 onSubmit="return dil(this)" action="withdraw.jsp">
+									<form name=F1 onSubmit="return dil(this)" action="withdrawdb.jsp">
 										<table cellspacing="5" cellpadding="3">
 											<tr>
 												<td>ACCOUNT NO:</td>
