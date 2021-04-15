@@ -91,7 +91,7 @@
 			out.print("Please check your username and Password");
 			request.setAttribute("balance","Please check your username and Password");
 			%>
-			<jsp:forward page="closeac1.jsp"></jsp:forward> 
+			<jsp:forward page="closeac.jsp"></jsp:forward> 
 			<% 
 			}
 		 }catch (SQLException e) {

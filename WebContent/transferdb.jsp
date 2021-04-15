@@ -16,9 +16,8 @@
 
 		<div id="header">
 			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
-				width="50px"></IMG></A>
-				<A href="index.html" style = "float:right"><img height="50px"
-				width="50px" src="pictures/14.png"></A>
+				width="50px"></IMG></A> <A href="index.html" style="float: right"><img
+				height="50px" width="50px" src="pictures/14.png"></A>
 			<h1>
 				HD - BANK<span class="style1"></span>
 			</h1>
@@ -86,6 +85,22 @@
 			out.println("Money Transfered from accountno. " +accountno+ " to accountno." + taccountno);
 			Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");			
 			PreparedStatement ps1=con1.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+			 String des="Transfer_Depoist";
+			    PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?)");
+	    		ps5.setInt(1,taccountno);
+	    		ps5.setString(2,des);
+	    		ps5.setString(3,amoun);
+	    		
+	    		ps5.executeUpdate();
+	    		
+				 String des1="Transfer_Withdraw";
+				    PreparedStatement ps6 = con.prepareStatement("insert into ministatement values(?,?,?)");
+		    		ps5.setInt(1,accountno);
+		    		ps5.setString(2,des1);
+		    		ps5.setString(3,amoun);
+		    		
+		    		ps5.executeUpdate();
+			
 			
             ps1.setInt(1,taccountno);
 			ResultSet rs1=ps1.executeQuery();
@@ -125,26 +140,21 @@
 			out.print("Please check your username and Password");
 			request.setAttribute("balance","Please check your username and Password");
 			%>
-			<jsp:forward page="transfer1.jsp"></jsp:forward> 
-			<% 
+						<jsp:forward page="transfer.jsp"></jsp:forward>
+						<% 
 			}
 		 }catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-			%></table><%
+			%>
+					</table>
+					<%
 %>
-    	
-    	
-		 </table>
-		 </div>
+				
+		</table>
+	</div>
 
 
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*" %>
-
-
-
-
-   
-			
+	<%@ page import="java.sql.*"%>
+	<%@ page import="java.io.*"%>

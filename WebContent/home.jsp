@@ -87,13 +87,15 @@ try {
 				request.setAttribute("accountno",accountno);
 				}
 		    Integer accountno=(Integer)request.getAttribute("accountno");
+		    int amo=0;
+		    
 		    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
 			PreparedStatement ps=con.prepareStatement("Select * from NEWACCOUNT where accountno='"+accountno+"'");
-			ResultSet rs=ps.executeQuery();
-			
+			ResultSet rs=ps.executeQuery();			
 			out.print("<table align='left'  cellspacing='5' cellpadding='5'>");
 			out.print("<tr><th>ACCOUNT NO</th><th>USERNAME</th><th>PASSWORD</th><th>AMOUNT</th><th>ADDRESS</th><th>PHONE</th></tr>");
 			while(rs.next()){
+				amo=rs.getInt(5);
 				session.setAttribute("accountno",accountno);
 				out.print("<tr>");
 				out.print("<td>" + rs.getInt(1) + "</td>");
@@ -106,7 +108,19 @@ try {
 			    
 			}
 			out.print("</table>");
+			
+			
+			 String des="credit";
+			    PreparedStatement ps2 = con.prepareStatement("insert into ministatement values(?,?,?)");
+	    		ps2.setInt(1,accountno);
+	    		ps2.setString(2,des);
+	    		ps2.setInt(3,amo);
+	    		
+	    		ps2.executeUpdate();
 		} 
+						
+						
+						
 		catch (SQLException e) {
 			e.printStackTrace();
 		}

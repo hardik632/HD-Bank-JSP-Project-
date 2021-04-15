@@ -19,9 +19,11 @@
     		String address=request.getParameter("address");
     		String phone=request.getParameter("phone");
     		
+    		
     		Class.forName("com.mysql.jdbc.Driver");
     		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
     	    PreparedStatement ps = cn.prepareStatement("Insert into NEWACCOUNT values(?,?,?,?,?,?,?)");
+    	    
     		ps.setString(1,null);
     		ps.setString(2,username);
     		ps.setString(3,password);
@@ -29,7 +31,8 @@
     		ps.setString(5,amount);
     		ps.setString(6,address);
     		ps.setString(7,phone);
-			 int i = ps.executeUpdate();
+			int i = ps.executeUpdate();
+			
              
              if(i>0)
              {

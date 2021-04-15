@@ -79,9 +79,19 @@
 		if(status==true){
 			out.print("Welcome   " + username);
 			out.println("<hr>");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");			
-			PreparedStatement ps1=con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");		
 			
+			 String des="withdraw";
+			    PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?)");
+	    		ps5.setString(1,accountno);
+	    		ps5.setString(2,des);
+	    		ps5.setString(3,amount);
+	    		
+	    		ps5.executeUpdate();
+			
+	    		
+			PreparedStatement ps1=con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+					
             ps1.setString(1,accountno);
 			ResultSet rs1=ps1.executeQuery();
 			int dataamount=0;
@@ -111,7 +121,7 @@
 			out.print("Please check your username and Password");
 			request.setAttribute("balance","Please check your username and Password");
 			%>
-			<jsp:forward page="withdraw1.jsp"></jsp:forward> 
+			<jsp:forward page="withdraw.jsp"></jsp:forward> 
 			<% 
 			}
 		 }catch (SQLException e) {
