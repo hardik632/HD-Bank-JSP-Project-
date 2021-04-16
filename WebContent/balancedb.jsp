@@ -35,6 +35,7 @@
 				<li><a href="withdraw.jsp">WITHDRAW</a></li>
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
+				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
@@ -110,7 +111,7 @@
 			out.print("Please check your username and Password");
 			request.setAttribute("balance","Please check your username and Password");
 			%>
-						<jsp:forward page="balance1.jsp"></jsp:forward>
+						<jsp:forward page="balance.jsp"></jsp:forward>
 						<% 
 		}
 		 }

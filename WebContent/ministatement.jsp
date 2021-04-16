@@ -1,88 +1,42 @@
 <html>
 
 <head>
-<SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
         function dil(form) {
-            for (var i = 0; i < 3; i++) {
-                if (!isNaN(form.elements[i].value)) {
-                    alert("This Field must be Char's")
-                    form.elements[i].value = ""
-                    form.elements[i].focus()
-                    return false
-                }
-            }
-            if (document.F1.password.value != document.F1.repassword.value) {
-                alert("Check Confirm PWD");
-                document.F1.repassword.value = ""
-                document.F1.repassword.focus()
-                return false
-            }
-
-
-            if (!isNaN(document.F1.phone.value)) {
-                if (document.F1.phone.value > 9999999999) {
-                    alert("enter correct phone varchar")
-                    document.F1.phone.value = ""
-                    document.F1.phone.focus()
-                    return false
-                }
-            }
-            else {
-                alert("This  field  must  be  varchar")
-                document.F1.phone.value = ""
-                return false
-            }
-
-
-
-
-            if (!isNaN(document.F1.amount.value)) {
-                if (document.F1.amount.value < 500) {
-                    alert("Minimum Balance should be 500 /-")
-                    document.F1.amount.value = ""
-                    document.F1.amount.focus()
-                    return false
-                }
-            }
-            else {
-                alert("This  field  must  be  varchar")
-                document.F1.amount.value = ""
-                return false
-            }
-
-
-
             for (var i = 0; i < form.elements.length; i++) {
                 if (form.elements[i].value == "") {
                     alert("Fill out all Fields")
-                    document.F1.username.focus()
+                    document.F1.accountno.focus()
                     return false
                 }
             }
 
+            if (isNaN(document.F1.accountno.value)) {
+                alert("Accountno must  be  varchar & can't be null")
+                document.F1.accountno.value = ""
+                document.F1.accountno.focus()
+                return false
+            }
+            if (!isNaN(document.F1.username.value)) {
+                alert("User Name  must  be  char's & can't be null")
+                document.F1.username.value = ""
+                document.F1.username.focus()
+                return false
+            }
 
+            if (!isNaN(document.F1.password.value)) {
+                alert("Password  must  be  char's & can't be null")
+                document.F1.password.value = ""
+                document.F1.password.focus()
+                return false
+            }
 
             return true
         }
     </SCRIPT>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>HD BANKS</title>
-
+<title>HD BANK</title>
 <link href="index.css" rel="stylesheet" type="text/css">
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -104,7 +58,7 @@
 
 		</div>
 
-		<div id="navigation">
+				<div id="navigation">
 			<ul>
 				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
 				<li><a href="balance.jsp">BALANCE</a></li>
@@ -112,7 +66,7 @@
 				<li><a href="withdraw.jsp">WITHDRAW</a></li>
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
+				<li><a href="ministatement.jsp">Mini Statement</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
@@ -135,16 +89,26 @@
 				<td width="400" valign="top"
 					style="border-right: #666666 1px dotted;">
 					<div id="welcome">
-						<h1>OPEN ACCOUNT FORM</h1>
+
+						<h1>TRANSACTIONS FORM</h1>
 						<br>
 						<table align="center" bgcolor="white">
-							<tr></tr>
+							<tr>
 
+							</tr>
 							<tr>
 								<td>
-									<form name=F1 onSubmit="return dil(this)"
-										action="newAccount.jsp">
+									<div>
+										<%if(request.getAttribute("balance")!=null) {
+                                            out.print(request.getAttribute("balance")); } %>
+									</div>
+									<form name=F1 onSubmit="return dil(this)" action="ministatementdb.jsp"
+										method="post">
 										<table>
+											<tr>
+												<td>ACCOUNT NO:</td>
+												<td><input type="text" name="accountno" /></td>
+											</tr>
 											<tr>
 												<td>USER NAME:</td>
 												<td><input type="text" name="username" /></td>
@@ -153,22 +117,7 @@
 												<td>PASSWORD:</td>
 												<td><input type="password" name="password" /></td>
 											</tr>
-											<tr>
-												<td>RE-PASSWORD:</td>
-												<td><input type="password" name="repassword" /></td>
-											</tr>
-											<tr>
-												<td>AMOUNT:</td>
-												<td><input type="text" name="amount" /></td>
-											</tr>
-											<tr>
-												<td>ADDRESS:</td>
-												<td><input type="text" name="address" /></td>
-											</tr>
-											<tr>
-												<td>PHONE:</td>
-												<td><input type="text" name="phone" /></td>
-											</tr>
+
 											<tr>
 												<td></td>
 												<td><input class="button button2" type="submit"
@@ -181,15 +130,13 @@
 						</table>
 					</div>
 				</td>
+
 				<td width="400" valign="top"
 					style="border-right: #666666 1px dotted;">
 					<div id="welcome">
 						<h1>Welcome</h1>
 						<br>
-						<center>
-							<img src="pictures/11.png" alt="business" width="196"
-								height="106">
-						</center>
+							<center><img src="pictures/11.png" alt="business" width="196" height="106"></center>
 						<br>
 						<p>Welcome to HD BANKS. Here you can create new account ,
 							withdraw money , deposit money , transfer money , check balance
@@ -240,7 +187,7 @@
 					INB Users, transaction OTP will be made mandatory for all merchant
 					related transactions, hence please have your mobile varchar
 					registered if the same has not been done until now.</marquee>
-				Copyright Â© HD BANKS
+				Copyright © HD BANKS
 			</div>
 			<script>
                 var slideIndex = 0;

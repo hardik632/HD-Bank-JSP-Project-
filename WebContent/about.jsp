@@ -5,17 +5,7 @@
 
 <link href="index.css" rel="stylesheet" type="text/css">
   <title>About Us - HD-BANK, New Delhi</title>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+  
 	<style>
 	p{
 	color: rgb(173, 173, 173);
@@ -53,10 +43,11 @@
 				<li><a href="withdraw.jsp">WITHDRAW</a></li>
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
+				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
-
+		</div>
 
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
   </table>
@@ -152,11 +143,14 @@
   <td width="25">&nbsp;</td>
   </tr>
   </table>
+  
   <table width="100%" height="26" border="0" cellpadding="0" cellspacing="0">
   </table>
+  
   </td>
   </tr>
   </table>
+  
   <table width="100%" border="0" cellspacing="7" cellpadding="0">
     <tr>
       <td>
@@ -164,20 +158,6 @@
             </strong></span></div>
       </td>
     </tr>
-    <tr>
-      <td>
-        <div align="center"> </div>
-      </td>
-    </tr>
-  </table>
-  <table border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-      <td><img src="" width="915" height="1"></td>
-    </tr>
-  </table>
-  </td>
-  </tr>
   </table>
 </body>
-
 </html>

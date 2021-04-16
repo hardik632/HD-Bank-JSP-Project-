@@ -1,3 +1,4 @@
+
 <html>
 <head>
 
@@ -26,7 +27,7 @@
 
 		</div>
 
-		<div id="navigation">
+				<div id="navigation">
 			<ul>
 				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
 				<li><a href="balance.jsp">BALANCE</a></li>
@@ -38,6 +39,7 @@
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
+
 
 		<table style="background: #FFFFFF; margin: 0 auto;">
 			<tr align="justify">
@@ -59,7 +61,7 @@
 					<% %>
 					<table>
 						<%
-        String num=request.getParameter("accountno");
+		String num=request.getParameter("accountno");
 		int accountno=Integer.parseInt(num);
         String username=request.getParameter("username");
 		String password=request.getParameter("password");
@@ -71,45 +73,57 @@
 			ps.setInt(1,accountno);
 			ps.setString(2,username);
 			ps.setString(3,password);
-			
 			ResultSet rs=ps.executeQuery();
 			status=rs.next();
+			
 		try {
 		if(status==true){
-			out.print("Welcome    " + username);
+			out.print("Welcome   " + username);
 			out.println("<hr>");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-			PreparedStatement ps1=con.prepareStatement("delete from NEWACCOUNT where accountno=?");
+			PreparedStatement ps1=con.prepareStatement("Select * from ministatement where accountno=?");
             ps1.setInt(1,accountno);
-			ps1.executeUpdate();
+			ResultSet rs1=ps1.executeQuery();
 			
-			out.print("&nbsp;&nbsp;&nbsp;your account no '"+accountno+"' has closed.");
-
+			out.print("<table align='left' cellspacing='5' cellpadding='5' border=1px>");
+			out.print("<tr><th>ACCOUNT NO</th><th>Description</th><th>AMOUNT</th></tr>");
+			while(rs1.next()){
+			    int accountno1=rs1.getInt(1);
+				session.setAttribute("accountno",accountno1);
 				
+				System.out.print(accountno);
+				
+				out.print("<tr>");
+				out.print("<td>" + rs1.getString(1) + "</td>");
+				out.print("<td>" + rs1.getString(2) + "</td>");
+				out.print("<td>" + rs1.getInt(3) + "</td>");
+				out.print("</tr>");
+			
+			}
+			out.print("</table>");
+			
+			
 			
 		}
-		else{
+		else
+		{
 			out.print("Please check your username and Password");
 			request.setAttribute("balance","Please check your username and Password");
 			%>
-			<jsp:forward page="closeac.jsp"></jsp:forward> 
-			<% 
-			}
-		 }catch (SQLException e) {
+						<jsp:forward page="ministatement.jsp"></jsp:forward>
+						<% 
+		}
+		 }
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-    	
-			%></table><%
-%>
-    	
-    	
-		 </table>
-		 </div>
+
+			%>
+					</table> <%%>
+				
+		</table>
+	</div>
 
 
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*" %>
-
-
-   
+	<%@ page import="java.sql.*"%>
+	<%@ page import="java.io.*"%>

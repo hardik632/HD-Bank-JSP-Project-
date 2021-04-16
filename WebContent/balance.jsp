@@ -58,7 +58,7 @@
 
 		</div>
 
-				<div id="navigation">
+		<div id="navigation">
 			<ul>
 				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
 				<li><a href="balance.jsp">BALANCE</a></li>
@@ -66,6 +66,7 @@
 				<li><a href="withdraw.jsp">WITHDRAW</a></li>
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
+				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
@@ -135,10 +136,7 @@
 					<div id="welcome">
 						<h1>Welcome</h1>
 						<br>
-						<center>
-							<img src="pictures/11.png" alt="business" width="196"
-								height="106">
-						</center>
+							<center><img src="pictures/11.png" alt="business" width="196" height="106"></center>
 						<br>
 						<p>Welcome to HD BANKS. Here you can create new account ,
 							withdraw money , deposit money , transfer money , check balance

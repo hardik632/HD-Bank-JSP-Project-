@@ -32,10 +32,10 @@
 				<li><a href="withdraw.jsp">WITHDRAW</a></li>
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
+				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
 				<li><a href="about.jsp">ABOUT US</a></li>
 			</ul>
 		</div>
-
 
 		<table style="background: #FFFFFF; margin: 0 auto;">
 			<tr align="justify">
