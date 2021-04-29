@@ -43,8 +43,8 @@
 
 	<div id="top_links">
 
-		<marquee style="background-color: white;">"No carelessness
-			until there is a cure" </marquee>
+		<marquee style="background-color: yellow; color: blue;">"No
+			carelessness until there is a cure" </marquee>
 
 		<div id="header">
 			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
@@ -67,25 +67,25 @@
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="about.jsp">ABOUT US</a></li>
+				<li><a href="#">LOAN</a></li>
 			</ul>
 		</div>
+	</div>
 
+	<table style="background: #FFFFFF; margin: 0 auto;">
+		<tr align="justify">
+			<td width="400" valign="top"
+				style="border-right: #666666 1px dotted;">
+				<div id="services">
+					<h1>Services</h1>
+					<br>
+					<ul>
+						<li><a href="about.jsp">About Us</a></li>
+						<li><a href="contactus.html">Contact Us</a></li>
+					</ul>
 
-		<table style="background: #FFFFFF; margin: 0 auto;">
-			<tr align="justify">
-				<td width="400" valign="top"
-					style="border-right: #666666 1px dotted;">
-					<div id="services">
-						<h1>Services</h1>
-						<br>
-						<ul>
-							<li><a href="about.jsp">About Us</a></li>
-							<li><a href="contactus.html">Contact Us</a></li>
-							
-						</ul>
-					</div>
-				</td>
+				</div>
+			</td>
 				<td width="400" valign="top"
 					style="border-right: #666666 1px dotted;">
 					<div id="welcome">

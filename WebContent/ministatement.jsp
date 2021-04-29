@@ -80,9 +80,8 @@
 						<h1>Services</h1>
 						<br>
 						<ul>
-							<li><a href="#">New Account</a></li>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Apply for a Loan</a></li>
+							<li><a href="about.jsp">About Us</a></li>
+							<li><a href="contactus.html">Contact Us</a></li>
 						</ul>
 					</div>
 				</td>
