@@ -34,7 +34,7 @@
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="#">LOAN</a></li>
+				<li><a href="fd.html">FD</a></li>
 			</ul>
 		</div>
 	</div>
@@ -70,7 +70,6 @@
 					String amoun = request.getParameter("amount");
 					int add = Integer.parseInt(amoun);
 					boolean status = false;
-
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 					PreparedStatement ps = con
@@ -80,7 +79,6 @@
 					ps.setString(3, password);
 					ResultSet rs = ps.executeQuery();
 					status = rs.next();
-
 					try {
 						if (status == true) {
 							out.print("Welcome   " + username);
@@ -88,29 +86,30 @@
 							out.println("Money Transfered from accountno. " + accountno + " to accountno." + taccountno);
 							Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 							PreparedStatement ps1 = con1.prepareStatement("Select * from NEWACCOUNT where accountno=?");
+							
+							DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+							LocalDateTime now = LocalDateTime.now();
 							String des = "Transfer_Depoist";
-							PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?)");
+							PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?,?)");
 							ps5.setInt(1, taccountno);
 							ps5.setString(2, des);
 							ps5.setString(3, amoun);
-
+							ps5.setString(4,dtf.format(now));
 							ps5.executeUpdate();
-
+							
+							
 							String des1 = "Transfer_Withdraw";
-							PreparedStatement ps6 = con.prepareStatement("insert into ministatement values(?,?,?)");
 							ps5.setInt(1, accountno);
 							ps5.setString(2, des1);
 							ps5.setString(3, amoun);
-
+							ps5.setString(4,dtf.format(now));
 							ps5.executeUpdate();
-
+							
 							ps1.setInt(1, taccountno);
 							ResultSet rs1 = ps1.executeQuery();
 							int dataamount = 0;
-
 							if (rs1.next()) {
 						dataamount = add + rs1.getInt(5);
-
 							}
 							Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 							PreparedStatement ps2 = con2
@@ -118,17 +117,13 @@
 							ps2.setInt(1, dataamount);
 							ps2.executeUpdate();
 							ResultSet rs2 = ps1.executeQuery();
-
 							Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 							PreparedStatement ps3 = con3.prepareStatement("Select * from NEWACCOUNT where accountno=?");
-
 							ps3.setInt(1, accountno);
 							ResultSet rs3 = ps3.executeQuery();
 							int dataamount1 = 0;
-
 							if (rs3.next()) {
 						dataamount1 = rs3.getInt(5) - add;
-
 							}
 							Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 							PreparedStatement ps4 = con4
@@ -136,7 +131,6 @@
 							ps4.setInt(1, dataamount1);
 							ps4.executeUpdate();
 							ResultSet rs4 = ps4.executeQuery();
-
 						} else {
 							out.print("Please check your username and Password");
 							request.setAttribute("balance", "Please check your username and Password");
@@ -153,8 +147,8 @@
  %>
 			
 	</table>
-	</div>
-
 
 	<%@ page import="java.sql.*"%>
 	<%@ page import="java.io.*"%>
+	<%@ page import="java.time.*"%>
+	<%@ page import="java.time.format.*"%>

@@ -1,4 +1,3 @@
-
 <html>
 <head>
 
@@ -35,7 +34,7 @@
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="#">LOAN</a></li>
+				<li><a href="fd.html">FD</a></li>
 			</ul>
 		</div>
 	</div>
@@ -86,7 +85,7 @@
 							ResultSet rs1 = ps1.executeQuery();
 
 							out.print("<table align='left' cellspacing='5' cellpadding='5' border=1px>");
-							out.print("<tr><th>ACCOUNT NO</th><th>Description</th><th>AMOUNT</th></tr>");
+							out.print("<tr><th>ACCOUNT NO</th><th>DESCRIPTION</th><th>AMOUNT</th><th>DATE</th></tr>");
 							while (rs1.next()) {
 						int accountno1 = rs1.getInt(1);
 						session.setAttribute("accountno", accountno1);
@@ -97,6 +96,7 @@
 						out.print("<td>" + rs1.getString(1) + "</td>");
 						out.print("<td>" + rs1.getString(2) + "</td>");
 						out.print("<td>" + rs1.getInt(3) + "</td>");
+						out.print("<td>" + rs1.getString(4) + "</td>");
 						out.print("</tr>");
 
 							}
@@ -116,7 +116,6 @@
 				</table> <%%>
 			
 	</table>
-	</div>
 
 
 	<%@ page import="java.sql.*"%>

@@ -38,7 +38,7 @@
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="#">LOAN</a></li>
+				<li><a href="fd.html">FD</a></li>
 			</ul>
 		</div>
 	</div>
@@ -80,7 +80,9 @@
 						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 						PreparedStatement ps = con.prepareStatement("Select * from NEWACCOUNT where accountno='" + accountno + "'");
 						ResultSet rs = ps.executeQuery();
-						out.print("<table align='left'  cellspacing='5' cellpadding='5'>");
+						out.print("<h4>Welcome To HD BANKS, Here is your account details:</h4>");
+						out.println("<hr>");
+						out.print("<table align='left' border = 2 cellspacing='5' cellpadding='5'>");
 						out.print(
 						"<tr><th>ACCOUNT NO</th><th>USERNAME</th><th>PASSWORD</th><th>AMOUNT</th><th>ADDRESS</th><th>PHONE</th></tr>");
 						while (rs.next()) {
@@ -99,10 +101,13 @@
 						out.print("</table>");
 
 						String des = "credit";
-						PreparedStatement ps2 = con.prepareStatement("insert into ministatement values(?,?,?)");
+						DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+						LocalDateTime now = LocalDateTime.now();
+						PreparedStatement ps2 = con.prepareStatement("insert into ministatement values(?,?,?,?)");
 						ps2.setInt(1, accountno);
 						ps2.setString(2, des);
 						ps2.setInt(3, amo);
+						ps2.setString(4,dtf.format(now));
 
 						ps2.executeUpdate();
 					}
@@ -120,3 +125,5 @@
 
 	<%@ page import="java.sql.*"%>
 	<%@ page import="java.io.*"%>
+	<%@ page import="java.time.*"%>
+	<%@ page import="java.time.format.*"%>

@@ -34,7 +34,7 @@
 				<li><a href="transfer.jsp">TRANSFER</a></li>
 				<li><a href="closeac.jsp">CLOSE A/C</a></li>
 				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="#">LOAN</a></li>
+				<li><a href="fd.html">FD</a></li>
 			</ul>
 		</div>
 	</div>
@@ -86,10 +86,13 @@
 							Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 
 							String des = "withdraw";
-							PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?)");
+							DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+							LocalDateTime now = LocalDateTime.now();
+							PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?,?)");
 							ps5.setString(1, accountno);
 							ps5.setString(2, des);
 							ps5.setString(3, amount);
+							ps5.setString(4,dtf.format(now));
 
 							ps5.executeUpdate();
 
@@ -136,6 +139,7 @@
 			
 	</table>
 
-
 	<%@ page import="java.sql.*"%>
 	<%@ page import="java.io.*"%>
+	<%@ page import="java.time.*"%>
+	<%@ page import="java.time.format.*"%>
