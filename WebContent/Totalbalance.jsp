@@ -70,7 +70,9 @@
 							if (request.getAttribute("balance") != null) {
 								out.print(request.getAttribute("balance"));
 								out.print(request.getAttribute("totaldataamount"));
+								
 							}
+							
 							%>
 						</td>
 					</tr>

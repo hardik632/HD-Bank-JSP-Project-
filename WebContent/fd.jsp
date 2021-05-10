@@ -50,7 +50,7 @@
 
 </head>
 
-<body>
+<body onload = "hide()">
 	<div id="top_links">
 
 		<marquee style="background-color: yellow; color: blue;">"No
@@ -98,7 +98,7 @@
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
-					<h1>DEPOSIT FORM</h1>
+					<h1>FIXED DEPOSIT FORM</h1>
 					<br>
 					<table>
 						<tr>
@@ -111,10 +111,79 @@
 									if (request.getAttribute("balance") != null) {
 										out.print(request.getAttribute("balance"));
 									}
+									if (request.getAttribute("infbal") != null) {
+										out.print(request.getAttribute("infbal"));
+									}
 									%>
-								</div>
-								<form name=F1 onSubmit="return dil(this)" action="fddb.jsp"
-									method="post">
+								</div> 
+							
+								<input class="button button3" onclick="check(this)" id ="createfd" value="Create FD" /> 
+								<br><br>
+								<input class="button button3" onclick="check1(this)" id ="viewfd" value="View FD" /> 
+								
+								
+								<script>
+								function hide(){
+									document.getElementById("fd").style.display = "none";
+									document.getElementById("fd1").style.display = "none";
+								}
+								function check(val)
+								{
+									
+									
+									if(val.value=="Create FD"){
+										document.getElementById("fd1").style.display="block";
+										document.getElementById("fd").style.display = "none";
+										document.getElementById("viewfd").value = "View FD";
+									val.value ="Hide Create FD";
+									}
+									else{
+										document.getElementById("fd1").style.display = "none";
+										val.value ="Create FD";
+									}
+											
+								}
+								function check1(val)
+								{
+									
+									
+									if(val.value=="View FD"){
+										document.getElementById("fd").style.display="block";
+										document.getElementById("fd1").style.display = "none";
+										document.getElementById("createfd").value = "Create FD";
+									val.value ="Hide view FD";}
+									else{
+										document.getElementById("fd").style.display = "none";
+										val.value ="View FD";
+									}
+											
+								}
+								</script>
+
+								<form name=F1 id="fd" onSubmit="return dil(this)"
+									action="fddb1.jsp" method="post">
+									<table>
+										<tr>
+											<td>ACCOUNT NO:</td>
+											<td><input type="text" name="accountno" /></td>
+										</tr>
+										<tr>
+											<td>USER NAME:</td>
+											<td><input type="text" name="username" /></td>
+										</tr>
+										<tr>
+											<td>PASSWORD:</td>
+											<td><input type="password" name="password" /></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td><input class="button button2" type="submit"
+												value="Submit" /> <input class="button button3"
+												type="reset" value="Clear" /></td>
+									</table>
+								</form>
+								<form name=F1 id="fd1" onSubmit="return dil(this)"
+									action="fddb.jsp" method="post">
 									<table>
 										<tr>
 											<td>ACCOUNT NO:</td>
@@ -133,10 +202,14 @@
 											<td><input type="text" name="amount" /></td>
 										</tr>
 										<tr>
+											<td>Tenure:</td>
+											<td><input type="text" name="tenure" /></td>
+										</tr>
+										<tr>
 											<td></td>
 											<td><input class="button button2" type="submit"
 												value="Submit" /> <input class="button button3"
-												type="reset" value="Clear" />
+												type="reset" value="Clear" /></td>
 									</table>
 								</form>
 							</td>
@@ -147,15 +220,11 @@
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
-					<h1>Welcome</h1>
+					<h1>Interst Rate</h1>
 					<br>
-					<center>
-						<img src="pictures/11.png" alt="business" width="196" height="106">
-					</center>
-					<br>
-					<p>Welcome to HD BANKS. Here you can create new account ,
-						withdraw money , deposit money , transfer money , check balance
-						and can close your account online.</p>
+			
+						<img src="pictures/fd.PNG" alt="business" width="350" height="400">
+
 
 				</div>
 			</td>
@@ -200,7 +269,7 @@
 				email. Please do not click on links received on your email or mobile
 				asking your Bank/Card details. | Attention Retail/Corporate INB
 				Users, transaction OTP will be made mandatory for all merchant
-				related transactions, hence please have your mobile varchar
+				related transactions, hence please have your mobile 
 				registered if the same has not been done until now.</marquee>
 			Copyright © HD BANKS
 		</div>
