@@ -38,13 +38,13 @@
              {
 
       			%>
-                <jsp:forward page="home.jsp"></jsp:forward>
+                <jsp:forward page="UsernewAccountPrint.jsp"></jsp:forward>
             	<%
              }
              else
              {
             	%>
-            	<jsp:include page="newAccount.html"></jsp:include>
+            	<jsp:include page="UsernewAccount.html"></jsp:include>
  				<%
              }
 	}

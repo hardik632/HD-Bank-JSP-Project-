@@ -15,7 +15,7 @@
 			carelessness until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="Userhome.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A> <A href="index.html" style="float: right"><img
 				height="50px" width="50px" src="pictures/14.png"></A>
 			<h1>
@@ -27,14 +27,12 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="UsernewAccount.html">NEW ACCOUNT</a></li>
+				<li><a href="Userbalance.jsp">BALANCE</a></li>
+				<li><a href="Usertransfer.jsp">TRANSFER</a></li>
+				<li><a href="Userministatement.jsp">TRANSACTIONS</a></li>
+				<li><a href="Userfd.jsp">FD</a></li>
+				<li><a href="Usercloseac.jsp">CLOSE A/C</a></li>
 			</ul>
 		</div>
 	</div>
@@ -82,8 +80,15 @@
 							out.println("<hr>");
 							Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 							PreparedStatement ps1 = con.prepareStatement("delete from NEWACCOUNT where accountno=?");
+							PreparedStatement ps2 = con.prepareStatement("delete from ministatement where accountno=?");
+							PreparedStatement ps3 = con.prepareStatement("delete from fd where accountno=?");
 							ps1.setInt(1, accountno);
+							ps2.setInt(1, accountno);
+							ps3.setInt(1, accountno);
 							ps1.executeUpdate();
+							ps2.executeUpdate();
+							ps3.executeUpdate();
+							
 
 							out.print("&nbsp;&nbsp;&nbsp;your account no '" + accountno + "' has closed.");
 
@@ -91,7 +96,7 @@
 							out.print("Please check your username and Password");
 							request.setAttribute("alert", "Please check your username and Password");
 					%>
-					<jsp:forward page="closeac.jsp"></jsp:forward>
+					<jsp:forward page="Usercloseac.jsp"></jsp:forward>
 					<%
 					}
 					} catch (SQLException e) {

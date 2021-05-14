@@ -15,7 +15,7 @@
 			carelessness until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="AdminHome.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A> <A href="index.html" style="float: right"><img
 				height="50px" width="50px" src="pictures/14.png"></A>
 			<h1>
@@ -27,14 +27,10 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="Adminaccount.jsp">All ACCOUNTS</a></li>
+				<li><a href="Admindeposit.jsp">DEPOSIT</a></li>
+				<li><a href="Adminwithdraw.jsp">WITHDRAW</a></li>
+				
 			</ul>
 		</div>
 	</div>
@@ -53,8 +49,6 @@
 
 				</div>
 			</td>
-
-
 			<td width="800" valign="top">
 				<%
 
@@ -65,7 +59,7 @@
 					String username = request.getParameter("username");
 					String password = request.getParameter("password");
 					String amount = request.getParameter("amount");
-					int sub = Integer.parseInt(amount);
+					int add = Integer.parseInt(amount);
 					boolean status = false;
 
 					Class.forName("com.mysql.jdbc.Driver");
@@ -84,8 +78,7 @@
 							out.print("Welcome   " + username);
 							out.println("<hr>");
 							Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
-
-							String des = "withdraw";
+							String des = "depoist";
 							DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 							LocalDateTime now = LocalDateTime.now();
 							PreparedStatement ps5 = con.prepareStatement("insert into ministatement values(?,?,?,?)");
@@ -97,14 +90,12 @@
 							ps5.executeUpdate();
 
 							PreparedStatement ps1 = con.prepareStatement("Select * from NEWACCOUNT where accountno=?");
-
 							ps1.setString(1, accountno);
 							ResultSet rs1 = ps1.executeQuery();
 							int dataamount = 0;
 
 							if (rs1.next()) {
-						dataamount = rs1.getInt(5) - sub;
-
+						dataamount = add + rs1.getInt(5);
 							}
 							Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
 							PreparedStatement ps2 = con1
@@ -114,28 +105,27 @@
 							ResultSet rs2 = ps1.executeQuery();
 
 							if (rs2.next()) {
-						out.print("There is a debit in your Balance,Updated Balance: ");
-						request.setAttribute("totaldataamount", dataamount);
-						request.setAttribute("balance", "There is a debit in your Balance,Updated Balance: ");
+
+						out.print("There is a credit in your Balance,Updated Balance: ");
+						request.setAttribute("totalbalance", dataamount);
+						request.setAttribute("alert", "There is a credit in your Balance,Updated Balance: ");
 					%>
-					<jsp:forward page="Totalbalance.jsp"></jsp:forward>
+					<jsp:forward page="AdminAlert.jsp"></jsp:forward>
 					<%
 					}
 
 					} else {
 					out.print("Please check your username and Password");
-					request.setAttribute("balance", "Please check your username and Password");
+					request.setAttribute("alert", "Please check your username and Password");
 					%>
-					<jsp:forward page="withdraw.jsp"></jsp:forward>
+					<jsp:forward page="Admindeposit.jsp"></jsp:forward>
 					<%
 					}
 					} catch (SQLException e) {
 					e.printStackTrace();
 					}
 					%>
-				</table> <%
-
- %>
+				</table> <%%>
 			
 	</table>
 

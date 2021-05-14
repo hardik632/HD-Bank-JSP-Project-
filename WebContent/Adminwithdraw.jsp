@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
@@ -15,11 +12,12 @@
 		}
 
 		if (isNaN(document.F1.accountno.value)) {
-			alert("Accountno must  be  varchar & can't be null")
+			alert("A/C No.  must  be  varchar & can't be null")
 			document.F1.accountno.value = ""
 			document.F1.accountno.focus()
 			return false
 		}
+
 		if (!isNaN(document.F1.username.value)) {
 			alert("User Name  must  be  char's & can't be null")
 			document.F1.username.value = ""
@@ -34,9 +32,18 @@
 			return false
 		}
 
+		if (isNaN(document.F1.amount.value)) {
+			alert("Amount  must  be  varchar & can't be null")
+			document.F1.amount.value = ""
+			document.F1.amount.focus()
+			return false
+		}
+
 		return true
 	}
 </SCRIPT>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>HD BANKS</title>
 
@@ -51,7 +58,7 @@
 			carelessness until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="AdminHome.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A> <A href="index.html" style="float: right"><img
 				height="50px" width="50px" src="pictures/14.png"></A>
 			<h1>
@@ -63,14 +70,10 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="Adminaccount.jsp">All ACCOUNTS</a></li>
+				<li><a href="Admindeposit.jsp">DEPOSIT</a></li>
+				<li><a href="Adminwithdraw.jsp">WITHDRAW</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -92,7 +95,7 @@
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
-					<h1>CLOSE ACCOUNT FORM</h1>
+					<h1>WITHDRAW FORM</h1>
 					<br>
 					<table align="center" bgcolor="white">
 						<tr>
@@ -102,12 +105,13 @@
 							<td>
 								<div>
 									<%
-									if (request.getAttribute("alert") != null) {
-										out.print(request.getAttribute("alert"));
+									if (request.getAttribute("balance") != null) {
+										out.print(request.getAttribute("balance"));
 									}
 									%>
 								</div>
-								<form name=F1 onSubmit="return dil(this)" action="closeacdb.jsp">
+								<form name=F1 onSubmit="return dil(this)"
+									action="Adminwithdrawdb.jsp" method="post">
 									<table cellspacing="5" cellpadding="3">
 										<tr>
 											<td>ACCOUNT NO:</td>
@@ -120,6 +124,10 @@
 										<tr>
 											<td>PASSWORD:</td>
 											<td><input type="password" name="password" /></td>
+										</tr>
+										<tr>
+											<td>AMOUNT:</td>
+											<td><input type="text" name="amount" /></td>
 										</tr>
 
 										<tr>
@@ -134,6 +142,7 @@
 					</table>
 				</div>
 			</td>
+
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
@@ -153,7 +162,6 @@
 
 		</tr>
 	</table>
-
 	<div id="footer_top">
 		<div id="footer_navigation"></div>
 		<marquee style="background-color: yellow; color: blue;">Beware
@@ -219,9 +227,6 @@
 				setTimeout(showSlides, 2000); // Change image every 2 seconds
 			}
 		</script>
-
-
-	</div>
 
 
 	</div>

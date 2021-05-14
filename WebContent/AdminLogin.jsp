@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -7,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>HD Banks</title>
+<title>HD BANKS</title>
 </head>
 <body>
 
@@ -15,32 +16,22 @@
 	try {
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
-		String email = request.getParameter("email");
-		String phonevarchar = request.getParameter("phoneno");
-		String birthdate = request.getParameter("dob");
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp", "root", "root");
-		String s = "insert into signup values(?,?,?,?,?)";
 
-		PreparedStatement p = cn.prepareStatement(s);
+		PreparedStatement p = cn.prepareStatement("select * from admin where username=? and password=?");
 
 		p.setString(1, username);
 		p.setString(2, password);
-		p.setString(3, email);
-		p.setString(4, phonevarchar);
-		p.setString(5, birthdate);
+		ResultSet r = p.executeQuery();
 
-		int i = p.executeUpdate();
-
-		if (i > 0) {
+		if (r.next()) {
 	%>
-	<jsp:forward page="login.html"></jsp:forward>
+	<jsp:forward page="AdminHome.html"></jsp:forward>
 	<%
 	} else {
-	%>
-	out.println("Something went wrong.");
-	<jsp:include page="register.html"></jsp:include>
-	<%
+		out.println("wrong username and password, Please try again.");
+
 	}
 	} catch (Exception ex) {
 	%>

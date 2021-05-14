@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -8,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>HD BANKS</title>
+<title>HD Banks</title>
 </head>
 <body>
 
@@ -16,21 +15,30 @@
 	try {
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
+		String email = request.getParameter("email");
+		String phonevarchar = request.getParameter("phoneno");
+		String birthdate = request.getParameter("dob");
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp", "root", "root");
+		String s = "insert into signup values(?,?,?,?,?)";
 
-		PreparedStatement p = cn.prepareStatement("select * from signup where username=? and password=?");
+		PreparedStatement p = cn.prepareStatement(s);
 
 		p.setString(1, username);
 		p.setString(2, password);
-		ResultSet r = p.executeQuery();
+		p.setString(3, email);
+		p.setString(4, phonevarchar);
+		p.setString(5, birthdate);
 
-		if (r.next()) {
+		int i = p.executeUpdate();
+
+		if (i > 0) {
 	%>
-	<jsp:forward page="Userhome.html"></jsp:forward>
+	<jsp:forward page="Login.html"></jsp:forward>
 	<%
 	} else {
 	%>
+	out.println("Something went wrong.");
 	<jsp:include page="Register.html"></jsp:include>
 	<%
 	}

@@ -50,14 +50,14 @@
 
 </head>
 
-<body onload = "hide()">
+<body>
 	<div id="top_links">
 
 		<marquee style="background-color: yellow; color: blue;">"No
 			carelessness until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="AdminHome.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A> <A href="index.html" style="float: right"><img
 				height="50px" width="50px" src="pictures/14.png"></A>
 			<h1>
@@ -69,14 +69,10 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="Adminaccount.jsp">All ACCOUNTS</a></li>
+				<li><a href="Admindeposit.jsp">DEPOSIT</a></li>
+				<li><a href="Adminwithdraw.jsp">WITHDRAW</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -98,7 +94,7 @@
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
-					<h1>FIXED DEPOSIT FORM</h1>
+					<h1>DEPOSIT FORM</h1>
 					<br>
 					<table>
 						<tr>
@@ -111,79 +107,10 @@
 									if (request.getAttribute("balance") != null) {
 										out.print(request.getAttribute("balance"));
 									}
-									if (request.getAttribute("infbal") != null) {
-										out.print(request.getAttribute("infbal"));
-									}
 									%>
-								</div> 
-							
-								<input class="button button3" onclick="check(this)" id ="createfd" value="Create FD" /> 
-								<br><br>
-								<input class="button button3" onclick="check1(this)" id ="viewfd" value="View FD" /> 
-								
-								
-								<script>
-								function hide(){
-									document.getElementById("fd").style.display = "none";
-									document.getElementById("fd1").style.display = "none";
-								}
-								function check(val)
-								{
-									
-									
-									if(val.value=="Create FD"){
-										document.getElementById("fd1").style.display="block";
-										document.getElementById("fd").style.display = "none";
-										document.getElementById("viewfd").value = "View FD";
-									val.value ="Hide Create FD";
-									}
-									else{
-										document.getElementById("fd1").style.display = "none";
-										val.value ="Create FD";
-									}
-											
-								}
-								function check1(val)
-								{
-									
-									
-									if(val.value=="View FD"){
-										document.getElementById("fd").style.display="block";
-										document.getElementById("fd1").style.display = "none";
-										document.getElementById("createfd").value = "Create FD";
-									val.value ="Hide view FD";}
-									else{
-										document.getElementById("fd").style.display = "none";
-										val.value ="View FD";
-									}
-											
-								}
-								</script>
-
-								<form name=F1 id="fd" onSubmit="return dil(this)"
-									action="fddb1.jsp" method="post">
-									<table>
-										<tr>
-											<td>ACCOUNT NO:</td>
-											<td><input type="text" name="accountno" /></td>
-										</tr>
-										<tr>
-											<td>USER NAME:</td>
-											<td><input type="text" name="username" /></td>
-										</tr>
-										<tr>
-											<td>PASSWORD:</td>
-											<td><input type="password" name="password" /></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td><input class="button button2" type="submit"
-												value="Submit" /> <input class="button button3"
-												type="reset" value="Clear" /></td>
-									</table>
-								</form>
-								<form name=F1 id="fd1" onSubmit="return dil(this)"
-									action="fddb.jsp" method="post">
+								</div>
+								<form name=F1 onSubmit="return dil(this)"
+									action="Admindepositdb.jsp" method="post">
 									<table>
 										<tr>
 											<td>ACCOUNT NO:</td>
@@ -202,14 +129,10 @@
 											<td><input type="text" name="amount" /></td>
 										</tr>
 										<tr>
-											<td>Tenure:</td>
-											<td><input type="text" name="tenure" /></td>
-										</tr>
-										<tr>
 											<td></td>
 											<td><input class="button button2" type="submit"
 												value="Submit" /> <input class="button button3"
-												type="reset" value="Clear" /></td>
+												type="reset" value="Clear" />
 									</table>
 								</form>
 							</td>
@@ -220,11 +143,15 @@
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
-					<h1>Interst Rate</h1>
+					<h1>Welcome</h1>
 					<br>
-			
-						<img src="pictures/fd.PNG" alt="business" width="350" height="400">
-
+					<center>
+						<img src="pictures/11.png" alt="business" width="196" height="106">
+					</center>
+					<br>
+					<p>Welcome to HD BANKS. Here you can create new account ,
+						withdraw money , deposit money , transfer money , check balance
+						and can close your account online.</p>
 
 				</div>
 			</td>
@@ -269,7 +196,7 @@
 				email. Please do not click on links received on your email or mobile
 				asking your Bank/Card details. | Attention Retail/Corporate INB
 				Users, transaction OTP will be made mandatory for all merchant
-				related transactions, hence please have your mobile 
+				related transactions, hence please have your mobile varchar
 				registered if the same has not been done until now.</marquee>
 			Copyright © HD BANKS
 		</div>

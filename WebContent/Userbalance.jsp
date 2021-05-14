@@ -47,7 +47,7 @@
 			carelessness until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="Userhome.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A>
 				<A href="index.html" style = "float:right"><img height="50px"
 				width="50px" src="pictures/14.png"></A>
@@ -60,14 +60,12 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="UsernewAccount.html">NEW ACCOUNT</a></li>
+				<li><a href="Userbalance.jsp">BALANCE</a></li>
+				<li><a href="Usertransfer.jsp">TRANSFER</a></li>
+				<li><a href="Userministatement.jsp">TRANSACTIONS</a></li>
+				<li><a href="Userfd.jsp">FD</a></li>
+				<li><a href="Usercloseac.jsp">CLOSE A/C</a></li>
 			</ul>
 		</div>
 	</div>
@@ -102,7 +100,7 @@
 										<%if(request.getAttribute("balance")!=null) {
                                             out.print(request.getAttribute("balance")); } %>
 									</div>
-									<form name=F1 onSubmit="return dil(this)" action="balancedb.jsp"
+									<form name=F1 onSubmit="return dil(this)" action="Userbalancedb.jsp"
 										method="post">
 										<table>
 											<tr>
@@ -185,7 +183,7 @@
 					email. Please do not click on links received on your email or
 					mobile asking your Bank/Card details. | Attention Retail/Corporate
 					INB Users, transaction OTP will be made mandatory for all merchant
-					related transactions, hence please have your mobile varchar
+					related transactions, hence please have your mobile 
 					registered if the same has not been done until now.</marquee>
 				Copyright © HD BANKS
 			</div>

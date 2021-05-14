@@ -1,53 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
 <SCRIPT LANGUAGE="JavaScript">
-        function dil(form) {
-            for (var i = 0; i < form.elements.length; i++) {
-                if (form.elements[i].value == "") {
-                    alert("Fill out all Fields")
-                    document.F1.accountno.focus()
-                    return false
-                }
-            }
+	function dil(form) {
+		for (var i = 0; i < form.elements.length; i++) {
+			if (form.elements[i].value == "") {
+				alert("Fill out all Fields")
+				document.F1.accountno.focus()
+				return false
+			}
+		}
 
-            if (isNaN(document.F1.accountno.value)) {
-                alert("Accountno must  be  varchar & can't be null")
-                document.F1.accountno.value = ""
-                document.F1.accountno.focus()
-                return false
-            }
-            if (!isNaN(document.F1.username.value)) {
-                alert("User Name  must  be  char's & can't be null")
-                document.F1.username.value = ""
-                document.F1.username.focus()
-                return false
-            }
+		if (isNaN(document.F1.accountno.value)) {
+			alert("A/C No.  must  be  varchar & can't be null")
+			document.F1.accountno.value = ""
+			document.F1.accountno.focus()
+			return false
+		}
 
-            if (!isNaN(document.F1.password.value)) {
-                alert("Password  must  be  char's & can't be null")
-                document.F1.password.value = ""
-                document.F1.password.focus()
-                return false
-            }
+		if (!isNaN(document.F1.username.value)) {
+			alert("User Name  must  be  char's & can't be null")
+			document.F1.username.value = ""
+			document.F1.username.focus()
+			return false
+		}
 
-            return true
-        }
-    </SCRIPT>
+		if (!isNaN(document.F1.password.value)) {
+			alert("Password  must  be  char's & can't be null")
+			document.F1.password.value = ""
+			document.F1.password.focus()
+			return false
+		}
+
+		if (isNaN(document.F1.taccountno.value)) {
+			alert("target account  must  be  varchar & can't be null")
+			document.F1.taccountno.value = ""
+			document.F1.taccountno.focus()
+			return false
+		}
+		if (document.F1.accountno.value == document.F1.taccountno.value) {
+			alert("Change target accountno");
+			document.F1.taccountno.value = ""
+			document.F1.taccountno.focus()
+			return false
+		}
+
+		if (isNaN(document.F1.amount.value)) {
+			alert("Amount  must  be  varchar & can't be null")
+			document.F1.amount.value = ""
+			document.F1.amount.focus()
+			return false
+		}
+
+		return true
+	}
+</SCRIPT>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>HD BANK</title>
+<title>HD BANKS</title>
+
 <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-
 	<div id="top_links">
 
 		<marquee style="background-color: yellow; color: blue;">"No
 			carelessness until there is a cure" </marquee>
 
 		<div id="header">
-			<A href="home.html"><IMG SRC="pictures/12.png" height="50px"
+			<A href="Userhome.html"><IMG SRC="pictures/12.png" height="50px"
 				width="50px"></IMG></A> <A href="index.html" style="float: right"><img
 				height="50px" width="50px" src="pictures/14.png"></A>
 			<h1>
@@ -59,14 +83,12 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="UsernewAccount.html">NEW ACCOUNT</a></li>
+				<li><a href="Userbalance.jsp">BALANCE</a></li>
+				<li><a href="Usertransfer.jsp">TRANSFER</a></li>
+				<li><a href="Userministatement.jsp">TRANSACTIONS</a></li>
+				<li><a href="Userfd.jsp">FD</a></li>
+				<li><a href="Usercloseac.jsp">CLOSE A/C</a></li>
 			</ul>
 		</div>
 	</div>
@@ -88,8 +110,7 @@
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
-
-					<h1>TRANSACTIONS FORM</h1>
+					<h1>TRANSFER FORM</h1>
 					<br>
 					<table align="center" bgcolor="white">
 						<tr>
@@ -98,11 +119,14 @@
 						<tr>
 							<td>
 								<div>
-									<%if(request.getAttribute("balance")!=null) {
-                                            out.print(request.getAttribute("balance")); } %>
+									<%
+									if (request.getAttribute("balance") != null) {
+										out.print(request.getAttribute("balance"));
+									}
+									%>
 								</div>
 								<form name=F1 onSubmit="return dil(this)"
-									action="ministatementdb.jsp" method="post">
+									action="Usertransferdb.jsp">
 									<table>
 										<tr>
 											<td>ACCOUNT NO:</td>
@@ -116,7 +140,14 @@
 											<td>PASSWORD:</td>
 											<td><input type="password" name="password" /></td>
 										</tr>
-
+										<tr>
+											<td>TARGET ACCOUNT NO:</td>
+											<td><input type="text" name="taccountno" /></td>
+										</tr>
+										<tr>
+											<td>AMOUNT:</td>
+											<td><input type="text" name="amount" /></td>
+										</tr>
 										<tr>
 											<td></td>
 											<td><input class="button button2" type="submit"
@@ -129,7 +160,6 @@
 					</table>
 				</div>
 			</td>
-
 			<td width="400" valign="top"
 				style="border-right: #666666 1px dotted;">
 				<div id="welcome">
@@ -149,7 +179,6 @@
 
 		</tr>
 	</table>
-
 	<div id="footer_top">
 		<div id="footer_navigation"></div>
 		<marquee style="background-color: yellow; color: blue;">Beware
@@ -192,26 +221,29 @@
 			Copyright © HD BANKS
 		</div>
 		<script>
-                var slideIndex = 0;
-                showSlides();
+			var slideIndex = 0;
+			showSlides();
 
-                function showSlides() {
-                    var i;
-                    var slides = document.getElementsByClassName("mySlides");
-                    var dots = document.getElementsByClassName("dot");
-                    for (i = 0; i < slides.length; i++) {
-                        slides[i].style.display = "none";
-                    }
-                    slideIndex++;
-                    if (slideIndex > slides.length) { slideIndex = 1 }
-                    for (i = 0; i < dots.length; i++) {
-                        dots[i].className = dots[i].className.replace(" active", "");
-                    }
-                    slides[slideIndex - 1].style.display = "block";
-                    dots[slideIndex - 1].className += " active";
-                    setTimeout(showSlides, 2000); // Change image every 2 seconds
-                }
-            </script>
+			function showSlides() {
+				var i;
+				var slides = document.getElementsByClassName("mySlides");
+				var dots = document.getElementsByClassName("dot");
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				slideIndex++;
+				if (slideIndex > slides.length) {
+					slideIndex = 1
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className
+							.replace(" active", "");
+				}
+				slides[slideIndex - 1].style.display = "block";
+				dots[slideIndex - 1].className += " active";
+				setTimeout(showSlides, 2000); // Change image every 2 seconds
+			}
+		</script>
 
 
 	</div>
