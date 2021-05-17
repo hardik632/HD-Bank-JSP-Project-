@@ -105,8 +105,8 @@
 							<td>
 								<div>
 									<%
-									if (request.getAttribute("balance") != null) {
-										out.print(request.getAttribute("balance"));
+									if (request.getAttribute("alert") != null) {
+										out.print(request.getAttribute("alert"));
 									}
 									%>
 								</div>

@@ -34,18 +34,7 @@
 
 		</div>
 
-		<div id="navigation">
-			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
-			</ul>
-		</div>
+		
 	</div>
 
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
