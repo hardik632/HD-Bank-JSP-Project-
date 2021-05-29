@@ -27,14 +27,12 @@
 
 		<div id="navigation">
 			<ul>
-				<li><a href="newAccount.html">NEW ACCOUNT</a></li>
-				<li><a href="balance.jsp">BALANCE</a></li>
-				<li><a href="deposit.jsp">DEPOSIT</a></li>
-				<li><a href="withdraw.jsp">WITHDRAW</a></li>
-				<li><a href="transfer.jsp">TRANSFER</a></li>
-				<li><a href="closeac.jsp">CLOSE A/C</a></li>
-				<li><a href="ministatement.jsp">TRANSACTIONS</a></li>
-				<li><a href="fd.jsp">FD</a></li>
+				<li><a href="UsernewAccount.html">NEW ACCOUNT</a></li>
+				<li><a href="Userbalance.jsp">BALANCE</a></li>
+				<li><a href="Usertransfer.jsp">TRANSFER</a></li>
+				<li><a href="Userministatement.jsp">TRANSACTIONS</a></li>
+				<li><a href="Userfd.jsp">FD</a></li>
+				<li><a href="Usercloseac.jsp">CLOSE A/C</a></li>
 			</ul>
 		</div>
 	</div>
